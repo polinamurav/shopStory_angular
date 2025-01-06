@@ -132,3 +132,56 @@
     }
   }
 }
+
+.info {
+  background-color: #A4CBA3;
+  background-image: url("../../../assets/images/page/info-bg.png");
+  background-repeat: no-repeat;
+  background-position-x: calc(50% + 340px);
+  padding: 80px 0;
+
+  .container {
+    .info-title {
+      @include head-lora-32;
+      margin-bottom: 5px;
+    }
+
+    .info-item {
+      margin-top: 35px;
+      color: #000;
+      max-width: 442px;
+
+      .info-image {
+        margin-bottom: 30px;
+      }
+
+      .info-text {
+        font-size: 16px;
+
+        .info-text-extra {
+          font-family: "Montserrat", sans-serif;
+          font-style: italic;
+          font-weight: 300;
+          line-height: 130%;
+          margin-top: 8px;
+        }
+      }
+
+      &.info-delivery {
+        .info-text:last-child {
+          margin-top: 16px;
+        }
+      }
+
+      &.info-payment {
+        .info-text {
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
