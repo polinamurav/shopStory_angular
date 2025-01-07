@@ -96,7 +96,7 @@
         </div>
       </div>
       <div class="catalog-products">
-
+        <product-card *ngFor="let product of products" [product]="product"></product-card>
       </div>
     </div>
   </div>
