@@ -12,6 +12,7 @@ export class ProductCardComponent implements OnInit {
   @Input() product!: ProductType;
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
+  @Input() isLight: boolean = false;
 
   constructor() { }
 
