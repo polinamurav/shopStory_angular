@@ -6,6 +6,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {CategoryWithTypeType} from "../../../../types/category-with-type.type";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,14 @@ import {CategoryWithTypeType} from "../../../../types/category-with-type.type";
 })
 export class HeaderComponent implements OnInit {
 
+  count: number = 0;
   isLogged: boolean = false;
   @Input() categories: CategoryWithTypeType[] = [];
 
   constructor(private authService: AuthService,
               private _snackBar: MatSnackBar,
-              private router: Router) {
+              private router: Router,
+              private cartService: CartService) {
     this.isLogged = this.authService.getIsLoggedIn();
   }
 
@@ -27,6 +30,16 @@ export class HeaderComponent implements OnInit {
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLogged = isLoggedIn;
     });
+
+    this.cartService.updateCartCount()
+      .subscribe(data =>{
+        this.count = data.count;
+      });
+
+    this.cartService.count$
+      .subscribe(count => {
+        this.count = count;
+      });
   }
 
   logout(): void {
