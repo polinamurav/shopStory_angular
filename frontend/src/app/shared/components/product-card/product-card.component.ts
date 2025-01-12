@@ -15,26 +15,29 @@ export class ProductCardComponent implements OnInit {
   serverStaticPath = environment.serverStaticPath;
   count: number = 1;
   @Input() isLight: boolean = false;
-  isInCart: boolean = false;
+  @Input() countInCart: number | undefined = 0;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    if (this.countInCart && this.countInCart > 1) {
+      this.count = this.countInCart;
+    }
   }
 
   addToCart() {
     this.cartService.updateCart(this.product.id, this.count)
       .subscribe((data: CartType) => {
-        this.isInCart = true;
+        this.countInCart = this.count;
       });
   }
 
   updateCount(value: number): void {
     this.count = value;
-    if (this.isInCart) {
+    if (this.countInCart) {
       this.cartService.updateCart(this.product.id, this.count)
         .subscribe((data: CartType) => {
-          this.isInCart = true;
+          this.countInCart = this.count;
         });
     }
   }
@@ -42,7 +45,7 @@ export class ProductCardComponent implements OnInit {
   removeFromCart() {
     this.cartService.updateCart(this.product.id, 0)
       .subscribe((data: CartType) => {
-        this.isInCart = false;
+        this.countInCart = 0;
         this.count = 1;
       });
   }
