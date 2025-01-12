@@ -25,11 +25,15 @@
       {{ product.price }} BYN
     </div>
     <div class="product-card-action">
-      <button class="button">В корзину</button>
+      <button class="button" *ngIf="!isInCart" (click)="addToCart()">В корзину</button>
+      <button class="button button-transparent button-in-cart" *ngIf="isInCart" (click)="removeFromCart()">
+        <span>В корзине</span>
+        <span>Удалить</span>
+      </button>
     </div>
   </div>
   <div class="product-card-extra" *ngIf="!isLight">
-    <count-selector></count-selector>
+    <count-selector [count]="count" (onCountChange)="updateCount($event)"></count-selector>
     <a [routerLink]="'/product/' + product.url" class="product-card-detail">
       <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7.34934 12V7.20896H12.1406V4.81343H7.34934V0H4.95369V4.81343H0.140625V7.20896H4.95369V12H7.34934Z"
