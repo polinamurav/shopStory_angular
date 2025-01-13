@@ -8,6 +8,7 @@ import {FavoriteType} from "../../../../types/favorite.type";
 import {FavoriteService} from "../../services/favorite.service";
 import {AuthService} from "../../../core/auth/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'product-card',
@@ -25,7 +26,8 @@ export class ProductCardComponent implements OnInit {
   constructor(private cartService: CartService,
               private favoriteService: FavoriteService,
               private authService: AuthService,
-              private _snackBar: MatSnackBar) { }
+              private _snackBar: MatSnackBar,
+              private router: Router) { }
 
   ngOnInit(): void {
     if (this.countInCart && this.countInCart > 1) {
@@ -83,6 +85,12 @@ export class ProductCardComponent implements OnInit {
 
           this.product.isInFavorite = true;
         });
+    }
+  }
+
+  navigate() {
+    if (this.isLight) {
+      this.router.navigate(['/product/' + this.product.url]);
     }
   }
 
