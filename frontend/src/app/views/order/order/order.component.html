@@ -70,11 +70,11 @@
           <div class="order-details-info-title">Ваш заказ</div>
           <div class="order-details-info-item first">
             <div class="order-details-info-item-text">Товаров:</div>
-            <div class="order-details-info-item-data">4</div>
+            <div class="order-details-info-item-data">{{totalCount}}</div>
           </div>
           <div class="order-details-info-item first">
             <div class="order-details-info-item-text">Общая стоимость:</div>
-            <div class="order-details-info-item-data">147 BYN</div>
+            <div class="order-details-info-item-data">{{totalAmount}} BYN</div>
           </div>
           <div class="order-details-info-item first">
             <div class="order-details-info-item-text">Стоимость доставки:</div>
@@ -82,7 +82,7 @@
           </div>
           <div class="order-details-info-item first">
             <div class="order-details-info-item-text">Итоговая стоимость:</div>
-            <div class="order-details-info-item-data">157 BYN</div>
+            <div class="order-details-info-item-data">{{totalAmount + 10}} BYN</div>
           </div>
         </div>
         <button class="button">Подтвердить заказ</button>
