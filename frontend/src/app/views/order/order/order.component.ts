@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartType} from "../../../../types/cart.type";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {CartService} from "../../../shared/services/cart.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DeliveryType} from "../../../../types/delivery.type";
 
 @Component({
   selector: 'app-order',
@@ -12,13 +13,16 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class OrderComponent implements OnInit {
 
+  deliveryType: DeliveryType = DeliveryType.delivery;
   cart: CartType | null = null;
   totalAmount: number = 0;
   totalCount: number = 0;
+  deliveryTypes = DeliveryType;
 
   constructor(private cartService: CartService,
               private _snackBar: MatSnackBar,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.cartService.getCart()
@@ -46,6 +50,10 @@ export class OrderComponent implements OnInit {
         this.totalCount += item.quantity;
       });
     }
+  }
+
+  changeDeliveryType(type: DeliveryType) {
+    this.deliveryType = type;
   }
 
 }
