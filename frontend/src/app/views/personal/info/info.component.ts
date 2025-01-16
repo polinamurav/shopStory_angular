@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {DeliveryType} from "../../../../types/delivery.type";
+import {PaymentType} from "../../../../types/payment.type";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-info',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  userInfoForm
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
+    protected readonly deliveryTypes = DeliveryType;
+    protected readonly paymentTypes = PaymentType;
 }
