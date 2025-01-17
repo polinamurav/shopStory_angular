@@ -40,7 +40,7 @@
                  formControlName="email">
         </div>
       </div>
-      <div class="data-form-block" *ngIf="deliveryType !== deliveryTypes.self">
+      <div class="data-form-block">
         <div class="data-form-label">
           Адрес доставки
         </div>
@@ -95,7 +95,9 @@
           </div>
         </div>
       </div>
-      <button class="button">Сохранить</button>
+      <button class="button" [disabled]="!(userInfoForm.dirty && userInfoForm.valid)" (click)="updateUserInfo()">
+        Сохранить
+      </button>
     </div>
   </div>
   <div class="page-image">
