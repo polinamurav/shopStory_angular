@@ -70,6 +70,16 @@
           width: 160px;
         }
 
+        .favorite-button-additional {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .favorite-button-additional button {
+          margin-bottom: 10px;
+        }
+
         .favorite-product-remove {
           margin-left: 60px;
           cursor: pointer;
