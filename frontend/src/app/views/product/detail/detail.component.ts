@@ -19,6 +19,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class DetailComponent implements OnInit {
 
+  isLogged: boolean = false;
   count: number = 1;
   product!: ProductType;
   recommendedProducts: ProductType[] = [];
@@ -56,9 +57,14 @@ export class DetailComponent implements OnInit {
               private authService: AuthService,
               private _snackBar: MatSnackBar,
               private cartService: CartService) {
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {
+    this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
+      this.isLogged = isLoggedIn;
+    });
+
     this.activatedRoute.params.subscribe(params => {
       this.productService.getProduct(params['url'])
         .subscribe((data: ProductType) => {

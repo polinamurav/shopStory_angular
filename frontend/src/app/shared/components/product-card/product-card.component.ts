@@ -22,6 +22,7 @@ export class ProductCardComponent implements OnInit {
   count: number = 1;
   @Input() isLight: boolean = false;
   @Input() countInCart: number | undefined = 0;
+  @Input() isLogged: boolean = false;
 
   constructor(private cartService: CartService,
               private favoriteService: FavoriteService,

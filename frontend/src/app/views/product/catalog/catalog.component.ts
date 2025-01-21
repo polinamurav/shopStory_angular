@@ -22,6 +22,7 @@ import {AuthService} from "../../../core/auth/auth.service";
 })
 export class CatalogComponent implements OnInit {
 
+  isLogged: boolean = false;
   products: ProductType[] = [];
   categoriesWithTypes: CategoryWithTypeType[] = [];
   activeParams: ActiveParamsType = {types: []};
@@ -44,9 +45,14 @@ export class CatalogComponent implements OnInit {
               private favoriteService: FavoriteService,
               private authService: AuthService,
               private router: Router) {
+    this.isLogged = this.authService.getIsLoggedIn();
   }
 
   ngOnInit(): void {
+    this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
+      this.isLogged = isLoggedIn;
+    });
+
     this.cartService.getCart()
       .subscribe((data: CartType | DefaultResponseType) => {
         if ((data as DefaultResponseType).error !== undefined) {
