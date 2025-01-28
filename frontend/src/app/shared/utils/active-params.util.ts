@@ -30,7 +30,7 @@ export class ActiveParamsUtil {
     }
 
     if (params.hasOwnProperty('page')) {
-      activeParams.page = params['page'];
+      activeParams.page = +params['page'];
     }
 
     return activeParams;
