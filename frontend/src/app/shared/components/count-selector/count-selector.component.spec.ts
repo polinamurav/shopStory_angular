@@ -23,4 +23,26 @@ describe('count-selector', () => {
     countSelectorComponent.decreaseCount();
     expect(countSelectorComponent.count).toBe(1);
   });
+
+  it('should emit value +1 after increasing', (done: DoneFn) => {
+    countSelectorComponent.count = 1;
+
+    countSelectorComponent.onCountChange.subscribe(newValue => {
+      expect(newValue).toBe(2);
+      done();
+    });
+
+    countSelectorComponent.increaseCount();
+  });
+
+  it('should emit value -1 after decreasing', (done: DoneFn) => {
+    countSelectorComponent.count = 5;
+
+    countSelectorComponent.onCountChange.subscribe(newValue => {
+      expect(newValue).toBe(4);
+      done();
+    });
+
+    countSelectorComponent.decreaseCount();
+  });
 })
