@@ -47,4 +47,4 @@ describe('active params util', () => {
 
     expect(result.pages).toBeUndefined();
   });
-})
+});

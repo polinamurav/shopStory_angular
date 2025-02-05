@@ -100,7 +100,7 @@ export class DetailComponent implements OnInit {
                 if (currentProductExists) {
                   this.product.isInFavorite = true;
                 }
-              })
+              });
           }
         });
     });
@@ -108,7 +108,7 @@ export class DetailComponent implements OnInit {
     this.productService.getBestProducts()
       .subscribe((data: ProductType[]) => {
         this.recommendedProducts = data;
-      })
+      });
   }
 
   updateCount(value: number): void {

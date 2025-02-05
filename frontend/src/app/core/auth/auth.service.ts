@@ -17,19 +17,19 @@ export class AuthService {
   private isLogged: boolean = false;
 
   constructor(private http: HttpClient) {
-    this.isLogged = !!localStorage.getItem(this.accessTokenKey)
+    this.isLogged = !!localStorage.getItem(this.accessTokenKey);
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | LoginResponseType> {
     return this.http.post<DefaultResponseType | LoginResponseType>(environment.api + 'login', {
       email, password, rememberMe
-    })
+    });
   }
 
   signup(email: string, password: string, passwordRepeat: string): Observable<DefaultResponseType | LoginResponseType> {
     return this.http.post<DefaultResponseType | LoginResponseType>(environment.api + 'signup', {
       email, password, passwordRepeat
-    })
+    });
   }
 
   logout(): Observable<DefaultResponseType> {
@@ -37,7 +37,7 @@ export class AuthService {
     if (tokens && tokens.refreshToken) {
       return this.http.post<DefaultResponseType>(environment.api + 'logout', {
         refreshToken: tokens.refreshToken
-      })
+      });
     }
     throw throwError(() => 'Can not find token');
   }
@@ -47,7 +47,7 @@ export class AuthService {
     if (tokens && tokens.refreshToken) {
       return this.http.post<DefaultResponseType | LoginResponseType>(environment.api + 'refresh', {
         refreshToken: tokens.refreshToken
-      })
+      });
     }
     throw throwError(() => 'Can not use token');
   }
@@ -74,7 +74,7 @@ export class AuthService {
     return {
       accessToken: localStorage.getItem(this.accessTokenKey),
       refreshToken: localStorage.getItem(this.refreshTokenKey)
-    }
+    };
   }
 
   get userId(): null | string {

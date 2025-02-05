@@ -33,7 +33,7 @@ export class FavoriteComponent implements OnInit {
         }
 
         this.products = data as FavoriteType[];
-      })
+      });
 
     this.cartService.getCart()
       .subscribe((cartData: CartType | DefaultResponseType) => {

@@ -97,7 +97,7 @@ export class MainComponent implements OnInit {
       image: 'review7.jpg',
       text: 'Хочу поблагодарить консультанта Ирину за помощь в выборе цветка для моей жены. Я ещё никогда не видел такого трепетного отношения к весьма непростому клиенту, которому сложно угодить! Сервис – огонь!'
     },
-  ]
+  ];
 
   constructor(private productService: ProductService) {
   }
@@ -106,7 +106,7 @@ export class MainComponent implements OnInit {
     this.productService.getBestProducts()
       .subscribe((data: ProductType[]) => {
         this.products = data;
-      })
+      });
   }
 
 }

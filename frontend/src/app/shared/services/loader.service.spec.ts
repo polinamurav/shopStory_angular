@@ -25,4 +25,4 @@ describe('loader service', () => {
 
     loaderService.hide();
   });
-})
+});

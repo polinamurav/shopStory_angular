@@ -5,7 +5,7 @@ import {FormsModule} from "@angular/forms";
 describe('count-selector', () => {
 
   let countSelectorComponent: CountSelectorComponent;
-  let fixture: ComponentFixture<CountSelectorComponent>
+  let fixture: ComponentFixture<CountSelectorComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -66,6 +66,6 @@ describe('count-selector', () => {
 
       expect(input.value).toBe('4');
       done();
-    })
+    });
   });
-})
+});

@@ -43,7 +43,7 @@ export class CategoryService {
                     name: item.name,
                     url: item.url,
                   }]
-              })
+              });
             }
           });
 

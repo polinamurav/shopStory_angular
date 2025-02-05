@@ -17,4 +17,4 @@ describe('order status util', () => {
   });
 
 
-})
+});

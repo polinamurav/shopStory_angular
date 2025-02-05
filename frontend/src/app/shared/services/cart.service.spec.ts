@@ -8,7 +8,7 @@ describe('cart service', () => {
 
   let cartService: CartService;
   const countValue = 3;
-  let httpServiceSpy: jasmine.SpyObj<HttpClient>
+  let httpServiceSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(() => {
 
@@ -29,7 +29,7 @@ describe('cart service', () => {
   it('should emit new count value', (done: DoneFn) => {
     cartService.count$.subscribe(value => {
       expect(value).toBe(countValue);
-      done()
+      done();
     });
 
     cartService.updateCartCount().subscribe();
@@ -43,4 +43,4 @@ describe('cart service', () => {
 
 
   });
-})
+});

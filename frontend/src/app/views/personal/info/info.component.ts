@@ -79,7 +79,7 @@ export class InfoComponent implements OnInit {
         email: this.userInfoForm.value.email ? this.userInfoForm.value.email : '',
         deliveryType: this.deliveryType,
         paymentType: this.userInfoForm.value.paymentType ? this.userInfoForm.value.paymentType : PaymentType.cashToCourier,
-      }
+      };
 
       if (this.userInfoForm.value.firstName) {
         paramObject.firstName = this.userInfoForm.value.firstName;

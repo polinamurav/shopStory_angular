@@ -78,7 +78,7 @@ export class CatalogComponent implements OnInit {
                 error: (error) => {
                   this.processCatalog();
                 },
-              })
+              });
         } else {
           this.processCatalog();
         }
@@ -176,7 +176,7 @@ export class CatalogComponent implements OnInit {
   removeAppliedFilter(appliedFilter: AppliedFilterType) {
     if (appliedFilter.urlParam === 'heightFrom' || appliedFilter.urlParam === 'heightTo' ||
       appliedFilter.urlParam === 'diameterFrom' || appliedFilter.urlParam === 'diameterTo') {
-      delete this.activeParams[appliedFilter.urlParam]
+      delete this.activeParams[appliedFilter.urlParam];
     } else {
       this.activeParams.types = this.activeParams.types.filter(item => item !== appliedFilter.urlParam);
     }

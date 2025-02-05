@@ -44,7 +44,7 @@ export class OrderComponent implements OnInit {
     entrance: [''],
     apartment: [''],
     comment: [''],
-  })
+  });
 
   constructor(private cartService: CartService,
               private _snackBar: MatSnackBar,

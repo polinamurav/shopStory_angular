@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
         error: () => {
           this.doLogout();
         }
-      })
+      });
   }
 
   doLogout(): void {

@@ -66,7 +66,7 @@ describe('product card', () => {
   });
 
   it('should call removeFromCart with count 0', () => {
-    let cartServiceSpy = TestBed.inject(CartService) as jasmine.SpyObj<CartService>
+    let cartServiceSpy = TestBed.inject(CartService) as jasmine.SpyObj<CartService>;
     cartServiceSpy.updateCart.and.returnValue(of({
         items: [
           {
@@ -82,7 +82,7 @@ describe('product card', () => {
         ]
     }));
 
-    productCardComponent.removeFromCart()
+    productCardComponent.removeFromCart();
 
     expect(cartServiceSpy.updateCart).toHaveBeenCalledWith(product.id, 0);
   });
@@ -105,14 +105,14 @@ describe('product card', () => {
     productCardComponent.isLight = true;
     productCardComponent.navigate();
 
-    expect(routerSpy.navigate).toHaveBeenCalled()
-  })
+    expect(routerSpy.navigate).toHaveBeenCalled();
+  });
 
   it ('should not call navigate for full card', () => {
     let routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     productCardComponent.isLight = false;
     productCardComponent.navigate();
 
-    expect(routerSpy.navigate).not.toHaveBeenCalled()
-  })
-})
+    expect(routerSpy.navigate).not.toHaveBeenCalled();
+  });
+});
